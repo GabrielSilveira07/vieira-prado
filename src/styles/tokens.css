@@ -1,0 +1,20 @@
+/* Tokens · Vieira Prado (direção clara: Oliva + Spectral + Brises) */
+:root {
+  color-scheme: light;
+  /* cor */
+  --bg: #FAF8F4;        /* fundo principal */
+  --paper: #F3EFE7;     /* superfície (seções alternadas, blocos secundários) */
+  --ink: #1C1B19;       /* texto */
+  --mut: #6B675F;       /* texto secundário · 5.4:1 sobre --bg */
+  --dim: #8C877D;       /* rótulos discretos */
+  --oliva: #4E5A3B;     /* cor da marca */
+  --line: rgba(28, 27, 25, 0.13);
+  --grid: rgba(28, 27, 25, 0.05);
+  /* tipo */
+  --serif: var(--font-serif), Georgia, serif;
+  --sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  /* layout */
+  --side: clamp(16px, 3.4vw, 50px);
+  --gap: clamp(12px, 1.6vw, 24px);
+  --curve: cubic-bezier(0.22, 0.8, 0.24, 1);
+}

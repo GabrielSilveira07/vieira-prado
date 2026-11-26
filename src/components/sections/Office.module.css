@@ -1,0 +1,8 @@
+.office { position: relative; z-index: 1; padding-block: clamp(40px, 6vw, 90px) clamp(110px, 14vw, 200px); }
+.pic { grid-column: 1 / 7; position: relative; aspect-ratio: 5 / 4; }
+.bk { position: absolute; left: -6%; top: 12%; width: 46%; height: 100%; background: var(--paper); }
+.im { position: absolute; inset: 0; overflow: hidden; }
+.im img { object-fit: cover; height: 118% !important; top: -9% !important; }
+.txt { grid-column: 8 / 13; align-self: center; display: grid; gap: 26px; }
+.txt p { color: var(--mut); max-width: 42ch; }
+@media (max-width: 900px) { .pic, .txt { grid-column: 1 / 13; } .txt { margin-top: 36px; } }

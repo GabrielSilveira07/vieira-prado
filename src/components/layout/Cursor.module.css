@@ -1,0 +1,8 @@
+.dot, .ring { position: fixed; left: 0; top: 0; z-index: 150; pointer-events: none; border-radius: 50%; display: none; }
+.on .dot, .on .ring { display: grid; }
+.dot { width: 6px; height: 6px; background: var(--ink); }
+.ring { width: 38px; height: 38px; border: 1px solid rgba(28, 27, 25, 0.35); place-items: center; transition: width 0.45s var(--curve), height 0.45s var(--curve), background 0.45s, border-color 0.45s; }
+.ring b { font-weight: 400; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; opacity: 0; transition: opacity 0.3s; }
+.big { width: 92px; height: 92px; background: var(--oliva); border-color: var(--oliva); }
+.big b { opacity: 1; }
+.link { width: 58px; height: 58px; border-color: var(--oliva); }

@@ -1,0 +1,26 @@
+.scrim { position: fixed; inset: 0; z-index: 170; background: rgba(28, 27, 25, 0.3); opacity: 0; pointer-events: none; transition: opacity 0.6s var(--curve); }
+.drawer { position: fixed; z-index: 171; top: 0; right: 0; bottom: 0; width: min(480px, 100vw); background: var(--bg); transform: translateX(100%); transition: transform 0.8s var(--curve);
+  display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain;
+  padding: calc(28px + env(safe-area-inset-top, 0px)) calc(34px + env(safe-area-inset-right, 0px)) calc(28px + env(safe-area-inset-bottom, 0px)) 34px; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+.drawer.open { transform: none; }
+.top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.top button { all: unset; cursor: pointer; }
+.body { padding-top: 36px; display: grid; gap: 26px; align-content: start; }
+.h { font-family: var(--serif); font-weight: 200; font-size: 32px; letter-spacing: -0.02em; line-height: 1.15; }
+.p { color: var(--mut); }
+.choice { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 15px 0; border-top: 1px solid var(--line); }
+.choice:last-child { border-bottom: 1px solid var(--line); }
+.choice small { color: var(--dim); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+.cn { font-family: var(--serif); font-weight: 200; font-size: 21px; transition: transform 0.6s var(--curve), color 0.4s; }
+.choice:hover .cn { transform: translateX(10px); color: var(--oliva); }
+.choice:focus-visible { outline: 1px solid var(--oliva); outline-offset: 3px; }
+.form { display: grid; gap: 24px; }
+.field { display: grid; gap: 8px; }
+.field input, .field textarea { font: 300 16px/1.5 var(--sans); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 8px 0; border-radius: 0; resize: vertical; }
+.field input:focus, .field textarea:focus { outline: 0; border-bottom-color: var(--oliva); }
+.err { color: #9A3B2C; font-size: 12.5px; }
+.foot { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; }
+.back { all: unset; cursor: pointer; color: var(--mut); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+.note { font-size: 12.5px; color: var(--dim); }
+@media (max-width: 900px) { .drawer { padding-left: 24px; padding-right: calc(24px + env(safe-area-inset-right, 0px)); } }

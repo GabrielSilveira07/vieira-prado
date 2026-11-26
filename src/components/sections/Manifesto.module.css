@@ -1,0 +1,7 @@
+.manifesto { position: relative; z-index: 1; padding-block: clamp(110px, 16vw, 240px); }
+.k { grid-column: 1 / 4; padding-top: 16px; }
+.p { grid-column: 4 / 12; font-family: var(--serif); font-weight: 200; font-size: clamp(30px, 3.6vw, 58px); line-height: 1.14; letter-spacing: -0.02em; }
+.p :global(em) { font-style: italic; color: var(--oliva); }
+.p :global(.w) { opacity: 0.14; }
+@media (prefers-reduced-motion: reduce) { .p :global(.w) { opacity: 1; } }
+@media (max-width: 900px) { .k, .p { grid-column: 1 / 13; } }

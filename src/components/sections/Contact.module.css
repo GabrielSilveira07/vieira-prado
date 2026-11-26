@@ -1,0 +1,10 @@
+.contact { position: relative; z-index: 1; padding-block: clamp(120px, 16vw, 240px) clamp(80px, 10vw, 140px); }
+.h { grid-column: 1 / 9; font-family: var(--serif); font-weight: 200; font-size: clamp(40px, 5.4vw, 88px); line-height: 1; letter-spacing: -0.03em; }
+.h :global(em) { font-style: italic; color: var(--oliva); }
+.cta { grid-column: 9 / 13; align-self: end; justify-self: start; }
+.mag { display: inline-flex; align-items: center; gap: 16px; padding: 22px 30px; background: var(--oliva); color: var(--bg); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; border: 0; cursor: pointer; transition: background 0.4s; }
+.mag:hover { background: var(--ink); }
+.info { grid-column: 1 / 13; margin-top: clamp(70px, 9vw, 130px); }
+.info div { grid-column: span 4; border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 6px; }
+.info b { font-weight: 400; font-size: 15px; user-select: all; }
+@media (max-width: 900px) { .h, .cta { grid-column: 1 / 13; } .cta { margin-top: 40px; } .info div { grid-column: 1 / 13; } }

@@ -1,0 +1,26 @@
+.hero { position: relative; z-index: 1; height: 100svh; min-height: 640px; overflow: hidden; }
+.block { position: absolute; left: 32.7%; top: 15%; width: 23.9%; height: 64%; background: var(--oliva); transform-origin: 0 100%; }
+.photo { position: absolute; left: 40.8%; top: 22%; width: 53.9%; height: 50%; overflow: hidden; box-shadow: 0 40px 70px -50px rgba(28, 27, 25, 0.5); }
+.photo img, .thumb img { object-fit: cover; }
+.cap { position: absolute; left: 58%; top: calc(72% + 14px); display: flex; gap: 28px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mut); }
+.cap b { font-weight: 400; color: var(--ink); }
+.thumb { position: absolute; right: max(var(--side), env(safe-area-inset-right, 0px)); top: calc(72% + 48px); width: clamp(120px, 11vw, 170px); aspect-ratio: 4 / 5; overflow: hidden; }
+.intro { position: absolute; left: max(var(--side), env(safe-area-inset-left, 0px)); top: 22%; width: min(22%, 300px); display: grid; gap: 18px; justify-items: start; }
+.intro p { color: var(--mut); font-size: 14px; line-height: 1.7; }
+.title { position: absolute; left: max(var(--side), env(safe-area-inset-left, 0px)); bottom: 17%; }
+.title h1 { font-family: var(--serif); font-weight: 200; letter-spacing: -0.025em; font-size: clamp(46px, 4.6vw, 78px); line-height: 0.95; white-space: nowrap; }
+.title :global(.k) { display: block; margin-top: 16px; letter-spacing: 0.46em; color: var(--ink); }
+.strip { position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: calc(18px + env(safe-area-inset-bottom, 0px)); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mut); }
+.scroll { display: flex; align-items: center; gap: 12px; color: var(--ink); }
+.scroll i { width: 1px; height: 28px; background: var(--line); position: relative; overflow: hidden; }
+.scroll i::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--oliva); animation: drop 2s var(--curve) infinite; }
+@keyframes drop { to { top: 100%; } }
+@media (max-width: 900px) {
+  .block { left: 8%; top: 15%; width: 44%; height: 44%; }
+  .photo { left: 20%; top: 21%; width: 74%; height: 32%; }
+  .cap { left: 20%; right: var(--side); top: calc(53% + 10px); gap: 16px; flex-wrap: wrap; }
+  .cap span:last-child, .thumb, .intro { display: none; }
+  .title { bottom: 20%; }
+  .title h1 { font-size: clamp(44px, 13vw, 70px); }
+  .strip span:nth-child(2) { display: none; }
+}

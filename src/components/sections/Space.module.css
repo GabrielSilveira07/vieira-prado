@@ -1,0 +1,5 @@
+.space { position: relative; z-index: 1; height: 110svh; overflow: hidden; }
+.space img { object-fit: cover; }
+.ov { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: clamp(40px, 6vw, 80px); color: #fff; background: linear-gradient(to top, rgba(20, 19, 16, 0.55), transparent 55%); }
+.ov :global(.k) { color: rgba(255, 255, 255, 0.82); }
+.h { margin-top: 12px; font-family: var(--serif); font-weight: 200; font-size: clamp(30px, 3.4vw, 54px); letter-spacing: -0.02em; max-width: 18ch; line-height: 1.1; }

@@ -1,0 +1,14 @@
+.team { position: relative; z-index: 1; padding-block: clamp(110px, 14vw, 200px); }
+.head { grid-column: 1 / 13; margin-bottom: 56px; display: flex; justify-content: space-between; align-items: end; }
+.mem { grid-column: span 6; display: grid; gap: 18px; position: relative; align-content: start; }
+.mem:nth-of-type(2) { margin-top: clamp(0px, 9vw, 140px); }
+.bk { position: absolute; left: -3%; top: 9%; width: 42%; aspect-ratio: 3 / 4; background: var(--oliva); z-index: 0; }
+.mem:nth-of-type(2) .bk { left: auto; right: -3%; background: var(--paper); }
+.por { position: relative; z-index: 1; aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper); width: 78%; }
+.mem:nth-of-type(2) .por, .mem:nth-of-type(2) .info { margin-left: 22%; }
+.por img { object-fit: cover; height: 112% !important; top: -6% !important; transition: transform 1.2s var(--curve); }
+.mem:hover .por img { transform: scale(1.04); }
+.info { display: grid; gap: 6px; }
+.info h3 { font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 2.2vw, 34px); letter-spacing: -0.01em; }
+.info p { color: var(--mut); max-width: 40ch; font-size: 14px; }
+@media (max-width: 900px) { .mem { grid-column: 1 / 13; } .mem:nth-of-type(2) { margin-top: 56px; } .por { width: 86%; } .mem:nth-of-type(2) .por, .mem:nth-of-type(2) .info { margin-left: 14%; } }
