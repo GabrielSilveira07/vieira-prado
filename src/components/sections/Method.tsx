@@ -16,11 +16,13 @@ export default function Method() {
     if (prefersReduced() || !isDesktop() || !track.current) return;
     const { gsap } = motion();
     const t = track.current;
-    const dist = () => t.scrollWidth - innerWidth + innerWidth * 0.1;
+    const dist = () => Math.max(0, t.scrollWidth - innerWidth);
     const ctx = gsap.context(() => {
-      gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: () => `+=${dist()}`, scrub: 1, pin: true, invalidateOnRefresh: true } })
-        .to(t, { x: () => -dist(), ease: "none" }, 0)
-        .to(rail.current, { scaleX: 1, ease: "none" }, 0);
+      gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: () => `+=${dist()}`, scrub: 1.2, pin: true, anticipatePin: 1, invalidateOnRefresh: true, refreshPriority: 5 } })
+        .to({}, { duration: 0.12 })                                   /* respiro: a seção assenta antes de deslizar */
+        .to(t, { x: () => -dist(), ease: "none", duration: 1 })
+        .to(rail.current, { scaleX: 1, ease: "none", duration: 1 }, "<")
+        .to({}, { duration: 0.08 });
     }, root);
     return () => ctx.revert();
   }, []);

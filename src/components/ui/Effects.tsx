@@ -34,9 +34,12 @@ export default function Effects() {
         gsap.from(el, { xPercent: -30, autoAlpha: 0, duration: 1.6, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 80%" } }),
       );
     });
-    const onLoad = () => ScrollTrigger.refresh();
-    window.addEventListener("load", onLoad);
-    return () => { window.removeEventListener("load", onLoad); ctx.revert(); };
+    /* recalcula tudo depois que as travas (hero, método), as fontes e as imagens existem */
+    const refresh = () => { ScrollTrigger.sort(); ScrollTrigger.refresh(); };
+    const t = setTimeout(refresh, 300);
+    document.fonts?.ready.then(refresh);
+    window.addEventListener("load", refresh);
+    return () => { clearTimeout(t); window.removeEventListener("load", refresh); ctx.revert(); };
   }, []);
   return null;
 }

@@ -24,6 +24,23 @@ export default function Hero() {
       gsap.set("[data-cols] i", { scaleY: 0 });
     }, root);
 
+    /* rolagem: criada já na montagem, com prioridade, para que as seções abaixo calculem a posição contando com esta trava */
+    ctx.add(() => {
+      if (isDesktop()) {
+        const block = q("[data-block]")[0] as HTMLElement;
+        const from0 = { xPercent: 0, yPercent: 0, y: 0, immediateRender: false };
+        gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "+=110%", scrub: 1.2, pin: true, anticipatePin: 1, refreshPriority: 10 } })
+          .fromTo(block, { scaleX: 1, immediateRender: false }, { scaleX: () => 1 / block.offsetWidth, ease: "none" }, 0)
+          .fromTo(q("[data-photo]"), from0, { xPercent: 8, yPercent: -10, ease: "none" }, 0)
+          .fromTo(q("[data-thumb]"), from0, { yPercent: -60, ease: "none" }, 0)
+          .fromTo(q("[data-title]"), from0, { y: -60, ease: "none" }, 0)
+          .fromTo(q("[data-out]"), { autoAlpha: 1, y: 0, immediateRender: false }, { autoAlpha: 0, y: -30, ease: "none" }, 0);
+      } else {
+        gsap.fromTo(q("[data-block]"), { scaleX: 1, immediateRender: false }, { scaleX: 0.02, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 1 } });
+      }
+    });
+
+    /* entrada: só depois da abertura */
     const play = () => ctx.add(() => {
       gsap.timeline({ defaults: { ease: "expo.out" } })
         .to("[data-cols] i", { scaleY: 1, duration: 1.6, stagger: 0.05, ease: "power3.inOut" })
@@ -32,19 +49,6 @@ export default function Hero() {
         .to(q("[data-photo] img"), { scale: 1.06, duration: 2.2 }, "<")
         .to(q("[data-ch]"), { yPercent: 0, duration: 1.2, stagger: 0.045 }, "<.3")
         .to([...q("[data-fade]"), "[data-intro]"], { autoAlpha: 1, y: 0, duration: 1, stagger: 0.08 }, "<.4");
-
-      if (isDesktop()) {
-        const block = q("[data-block]")[0] as HTMLElement;
-        gsap.timeline({ scrollTrigger: { trigger: root.current, start: "top top", end: "+=110%", scrub: 1, pin: true } })
-          .to(block, { scaleX: () => 1 / block.offsetWidth, ease: "none" }, 0)
-          .to(q("[data-photo]"), { xPercent: 8, yPercent: -10, ease: "none" }, 0)
-          .to(q("[data-photo] img"), { yPercent: -8, ease: "none" }, 0)
-          .to(q("[data-thumb]"), { yPercent: -60, ease: "none" }, 0)
-          .to(q("[data-title]"), { y: -60, ease: "none" }, 0)
-          .to(q("[data-out]"), { autoAlpha: 0, y: -30, ease: "none" }, 0);
-      } else {
-        gsap.to(q("[data-block]"), { scaleX: 0.02, ease: "none", scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 1 } });
-      }
     });
 
     if ((window as unknown as { __vpIntro?: boolean }).__vpIntro) play();

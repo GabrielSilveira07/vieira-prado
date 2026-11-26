@@ -2,8 +2,8 @@
 .top { position: absolute; left: 0; right: 0; top: calc(110px + env(safe-area-inset-top, 0px)); display: flex; justify-content: space-between; align-items: end; }
 .rail { position: absolute; left: 0; right: 0; top: 52%; height: 1px; background: var(--line); }
 .rail i { position: absolute; inset: 0; background: var(--oliva); transform: scaleX(0); transform-origin: left; }
-.track { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; will-change: transform; }
-.step { width: min(42vw, 560px); flex: none; padding-right: 6vw; display: grid; gap: 18px; padding-top: 16vh; position: relative; }
+.track { position: absolute; top: 0; left: 0; height: 100%; display: flex; align-items: center; will-change: transform; padding-right: max(var(--side), env(safe-area-inset-right, 0px)); }
+.step { width: clamp(420px, 38vw, 760px); flex: none; padding-right: 5vw; display: grid; gap: 18px; padding-top: 16vh; position: relative; }
 .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--oliva); position: absolute; top: calc(50% - 4px); left: 0; display: none; }
 .n { font-family: var(--serif); font-weight: 200; font-size: clamp(70px, 8vw, 128px); line-height: 0.8; color: var(--oliva); letter-spacing: -0.04em; }
 .step h3 { margin-top: 28px; font-family: var(--serif); font-weight: 300; font-size: clamp(24px, 2.2vw, 34px); letter-spacing: -0.01em; }
